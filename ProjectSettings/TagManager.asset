@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - mono
+  - vida1
+  - Laberinto
+  - vida2
+  - vida3
   layers:
   - Default
   - TransparentFX

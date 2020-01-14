@@ -10,13 +10,20 @@ public class MazeGenerator : MonoBehaviour
     public GameObject hueco;
     public GameObject premio;
 
- public static int nMax = 11;//impar
+    public PartidaSingleton instance;
+
+    public static int nMax = 11;//impar
 public static int mMax = 11;//impar
 public static int[,] M = new int[mMax,nMax];
 const int BLOQUE = 0;
 const int LIBRE = 1;
 
-void agregarParOrdenado(int[,] A, ref int k, int a, int b)
+    void Awake()
+    {
+        instance = PartidaSingleton.Instance;
+    }
+
+    void agregarParOrdenado(int[,] A, ref int k, int a, int b)
 {
     bool Esta = false;
     for (int i = 0; i < k; i++)
@@ -125,15 +132,15 @@ void crearLaberinto(int[,] M, int m, int n)
         }
         count++;
     }
+   
 }
  
    
 
     private void Start()
     {
-       
-        crearLaberinto(M, mMax, nMax);
         
+        crearLaberinto(M, mMax, nMax);
         pared.transform.parent = parentLaberinto.transform;
         hueco.transform.parent = parentLaberinto.transform;
         suelo.transform.parent = parentLaberinto.transform;
@@ -142,10 +149,10 @@ void crearLaberinto(int[,] M, int m, int n)
         {
             for (int j = 0; j < nMax; j++)
             {
-                if (M[i,j]== BLOQUE)
+                if (M[i, j] == BLOQUE)
                 {
                     pared.transform.localScale = new Vector3(1f, 1f, 1f);
-                    
+
                     GameObject auxPared = Instantiate(pared, new Vector3(i, 0, j), new Quaternion());
                     auxPared.transform.parent = parentLaberinto.transform;
                 }
@@ -157,15 +164,15 @@ void crearLaberinto(int[,] M, int m, int n)
                     {
                         random = 2;
                     }
-                    if(random == 1)
+                    if (random == 1)
                     {
                         //Instanciamos hueco
                         hueco.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                        
+
                         //Agregamos una rotacion aleatoria para el hueco del suelo
-                        int giro = Random.Range(0,1);
+                        int giro = Random.Range(0, 1);
                         int rotar = 90;
-                        if(giro == 0)
+                        if (giro == 0)
                         {
                             rotar = -90;
                         }
@@ -189,6 +196,6 @@ void crearLaberinto(int[,] M, int m, int n)
                 }
             }
         }
-       
+        
     }
 }

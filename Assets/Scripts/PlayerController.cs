@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour {
     public Text countText;
     public Text winText;
 	public Text nivel;
-	private int contadorNivel = 1;
 	
 
 	private Rigidbody rb;
@@ -39,10 +38,20 @@ public class PlayerController : MonoBehaviour {
 
         Vector3 movimiento = new Vector3(posH, 0.0f, posV);
 		if(rb.position.y < -2.5f){
-			winText.text = "Perdiste!!";
-			instance.contadorNiveles++;
 			
-			Invoke ("QuitGame", 1.5f);	
+			instance.vidas--;
+			if(instance.vidas > 0)
+			{
+				resetNivel();
+				gestionVidas();
+			}
+			else
+			{
+				winText.text = "¡¡Perdiste!!";
+				gestionVidas();
+				Invoke("QuitGame", 1.5f);
+			}
+
 		}else{
 			rb.AddForce(movimiento * velocidad);
 		}
@@ -50,18 +59,53 @@ public class PlayerController : MonoBehaviour {
        	
 	}
 
+	void gestionVidas()
+	{
+		switch (instance.vidas)
+		{
+			case 3:
+				GameObject.FindGameObjectWithTag("vida1").SetActive(true);
+				GameObject.FindGameObjectWithTag("vida2").SetActive(true);
+				GameObject.FindGameObjectWithTag("vida3").SetActive(true);
+				break;
+			case 2:
+				GameObject.FindGameObjectWithTag("vida1").SetActive(true);
+				GameObject.FindGameObjectWithTag("vida2").SetActive(true);
+				GameObject.FindGameObjectWithTag("vida3").SetActive(false);
+				break;
+			case 1:
+				GameObject.FindGameObjectWithTag("vida1").SetActive(true);
+				GameObject.FindGameObjectWithTag("vida2").SetActive(false);
+				GameObject.FindGameObjectWithTag("vida3").SetActive(false);
+				break;
+			default:
+				GameObject.FindGameObjectWithTag("vida1").SetActive(false);
+				GameObject.FindGameObjectWithTag("vida2").SetActive(false);
+				GameObject.FindGameObjectWithTag("vida3").SetActive(false);
+				break;
+		}
+	}
+
+	void resetNivel()
+	{
+		GameObject pelota = GameObject.FindGameObjectWithTag("Player");
+		pelota.transform.position = new Vector3(1f, 0.5f, 1f);
+	}
+
     void OnTriggerEnter(Collider other)
     {
-		if (other.gameObject.CompareTag ("mono")) {
+		if (other.gameObject.CompareTag("mono")) {
 			other.gameObject.SetActive (false);
 			contador = contador + 1;
 			SetCountText ();
 
             if (GameObject.FindGameObjectsWithTag("mono").Length == 0)
             {
-                Debug.Log(GameObject.FindGameObjectsWithTag("mono").Length);
-                winText.text = "Ganaste!!";
+         
+                winText.text = "¡¡Ganaste!!";
                 instance.contadorNiveles++;
+				instance.vidas = 3;
+				gestionVidas();
                 Invoke("CargarNivel",1.5f);
             }
         }
@@ -76,7 +120,6 @@ public class PlayerController : MonoBehaviour {
 	void SetCountText()
     {
             countText.text = "Contador: " + contador.ToString();
-
     }
 
 	void QuitGame()
