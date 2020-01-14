@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43975535, g: 0.48818028, b: 0.56840056, a: 1}
+  m_IndirectSpecularColor: {r: 0.4397551, g: 0.48817968, b: 0.56839985, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -415,6 +415,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170341371}
   m_CullTransparentMesh: 0
+--- !u!1 &645988251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645988252}
+  m_Layer: 0
+  m_Name: Laberinto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &645988252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645988251}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.2004255, y: -0.57273716, z: 0.000000068275575}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &844001849
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,10 +474,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b12411f7602e54386cea7e8c190ffb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentLaberinto: {fileID: 645988251}
   pared: {fileID: 1180618582407322647, guid: 669709f4e3be1c24094fbe767fb4b881, type: 3}
   suelo: {fileID: 308194513540349661, guid: 7267773cb70223647a388857b50dca85, type: 3}
   hueco: {fileID: 7008763000355041491, guid: 49b5174c3f533864ab3ffbbc2ac559ec, type: 3}
-  premio: {fileID: 0}
+  premio: {fileID: 1000013252799388, guid: e4ad27759b5d4fa47bd6e4b27ff21c01, type: 3}
 --- !u!4 &844001851
 Transform:
   m_ObjectHideFlags: 0

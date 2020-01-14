@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MazeGenerator : MonoBehaviour
 {
-
+    public GameObject parentLaberinto;
     public GameObject pared;
     public GameObject suelo;
     public GameObject hueco;
@@ -133,6 +133,11 @@ void crearLaberinto(int[,] M, int m, int n)
     {
        
         crearLaberinto(M, mMax, nMax);
+        
+        pared.transform.parent = parentLaberinto.transform;
+        hueco.transform.parent = parentLaberinto.transform;
+        suelo.transform.parent = parentLaberinto.transform;
+        premio.transform.parent = parentLaberinto.transform;
         for (int i = 0; i < mMax; i++)
         {
             for (int j = 0; j < nMax; j++)
@@ -140,7 +145,9 @@ void crearLaberinto(int[,] M, int m, int n)
                 if (M[i,j]== BLOQUE)
                 {
                     pared.transform.localScale = new Vector3(1f, 1f, 1f);
-                    Instantiate(pared, new Vector3(i, 0, j), new Quaternion());
+                    
+                    GameObject auxPared = Instantiate(pared, new Vector3(i, 0, j), new Quaternion());
+                    auxPared.transform.parent = parentLaberinto.transform;
                 }
                 if (M[i, j] == LIBRE)
                 {
@@ -154,7 +161,7 @@ void crearLaberinto(int[,] M, int m, int n)
                     {
                         //Instanciamos hueco
                         hueco.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-
+                        
                         //Agregamos una rotacion aleatoria para el hueco del suelo
                         int giro = Random.Range(0,1);
                         int rotar = 90;
@@ -162,20 +169,21 @@ void crearLaberinto(int[,] M, int m, int n)
                         {
                             rotar = -90;
                         }
-
-                        Instantiate(hueco, new Vector3(i, -1, j), Quaternion.Euler(90, rotar, 0));
+                        GameObject auxHueco = Instantiate(hueco, new Vector3(i, -1, j), Quaternion.Euler(90, rotar, 0));
+                        auxHueco.transform.parent = parentLaberinto.transform;
                     }
                     else
                     {
                         //Instanciamos suelo liso
                         suelo.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-
-                        Instantiate(suelo, new Vector3(i, -1, j), Quaternion.Euler(90, 0, 0));
-
+                        suelo.transform.parent = parentLaberinto.transform;
+                        GameObject auxSuelo = Instantiate(suelo, new Vector3(i, -1, j), Quaternion.Euler(90, 0, 0));
+                        auxSuelo.transform.parent = parentLaberinto.transform;
                         int pongoPremio = Random.Range(0, 11);
                         if (pongoPremio == 1)
                         {
-                            Instantiate(premio, new Vector3(i, 1, j), Quaternion.Euler(90, 0, 0));
+                            GameObject auxPremio = Instantiate(premio, new Vector3(i, 1, j), Quaternion.Euler(90, 0, 0));
+                            auxPremio.transform.parent = parentLaberinto.transform;
                         }
                     }
                 }
