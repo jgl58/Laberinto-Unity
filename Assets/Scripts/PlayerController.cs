@@ -41,8 +41,8 @@ public class PlayerController : MonoBehaviour {
 		if(rb.position.y < -2.5f){
 			winText.text = "Perdiste!!";
 			instance.contadorNiveles++;
-			Application.LoadLevel(0);
-			//Invoke ("QuitGame", 1.5f);	
+			
+			Invoke ("QuitGame", 1.5f);	
 		}else{
 			rb.AddForce(movimiento * velocidad);
 		}
@@ -57,18 +57,26 @@ public class PlayerController : MonoBehaviour {
 			contador = contador + 1;
 			SetCountText ();
 
-		}
+            if (GameObject.FindGameObjectsWithTag("mono").Length == 0)
+            {
+                Debug.Log(GameObject.FindGameObjectsWithTag("mono").Length);
+                winText.text = "Ganaste!!";
+                instance.contadorNiveles++;
+                Invoke("CargarNivel",1.5f);
+            }
+        }
 
+    }
+
+    void CargarNivel()
+    {
+        Application.LoadLevel(0);
     }
 
 	void SetCountText()
     {
             countText.text = "Contador: " + contador.ToString();
-            if (contador >= 4)
-            {
-                winText.text = "Ganaste!!";
-				Invoke ("QuitGame", 1.5f);	
-            }
+
     }
 
 	void QuitGame()

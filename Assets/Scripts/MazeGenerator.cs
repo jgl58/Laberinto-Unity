@@ -171,6 +171,12 @@ void crearLaberinto(int[,] M, int m, int n)
                         suelo.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 
                         Instantiate(suelo, new Vector3(i, -1, j), Quaternion.Euler(90, 0, 0));
+
+                        int pongoPremio = Random.Range(0, 11);
+                        if (pongoPremio == 1)
+                        {
+                            Instantiate(premio, new Vector3(i, 1, j), Quaternion.Euler(90, 0, 0));
+                        }
                     }
                 }
             }
