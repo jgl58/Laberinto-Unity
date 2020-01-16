@@ -94,12 +94,12 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
-		if (other.gameObject.CompareTag("mono")) {
+		if (other.gameObject.CompareTag("radar")) {
 			other.gameObject.SetActive (false);
 			contador = contador + 1;
 			SetCountText ();
 
-            if (GameObject.FindGameObjectsWithTag("mono").Length == 0)
+            if (GameObject.FindGameObjectsWithTag("radar").Length == 0)
             {
          
                 winText.text = "¡¡Ganaste!!";

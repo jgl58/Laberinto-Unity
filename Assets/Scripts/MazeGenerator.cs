@@ -189,7 +189,8 @@ void crearLaberinto(int[,] M, int m, int n)
                         int pongoPremio = Random.Range(0, 11);
                         if (pongoPremio == 1)
                         {
-                            GameObject auxPremio = Instantiate(premio, new Vector3(i, 1, j), Quaternion.Euler(90, 0, 0));
+                            premio.transform.localScale = new Vector3(0.5f, 0.2f, 0.5f);
+                            GameObject auxPremio = Instantiate(premio, new Vector3(i, 0, j), Quaternion.Euler(-90, 0, 0));
                             auxPremio.transform.parent = parentLaberinto.transform;
                         }
                     }

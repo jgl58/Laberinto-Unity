@@ -9,6 +9,7 @@ TagManager:
   - Laberinto
   - vida2
   - vida3
+  - radar
   layers:
   - Default
   - TransparentFX
