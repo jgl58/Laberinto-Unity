@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour {
         float posV = Input.GetAxis("Vertical");
 
         Vector3 movimiento = new Vector3(posH, 0.0f, posV);
-		if(rb.position.y < -2.5f){
+		if(rb.position.y < -10.5f){
 			
 			instance.vidas--;
 			if(instance.vidas > 0)
@@ -52,8 +52,6 @@ public class PlayerController : MonoBehaviour {
 				Invoke("QuitGame", 1.5f);
 			}
 
-		}else{
-			rb.AddForce(movimiento * velocidad);
 		}
 
        	
@@ -90,6 +88,9 @@ public class PlayerController : MonoBehaviour {
 	{
 		GameObject pelota = GameObject.FindGameObjectWithTag("Player");
 		pelota.transform.position = new Vector3(1f, 0.5f, 1f);
+
+		GameObject laberinto = GameObject.FindGameObjectWithTag("Laberinto");
+		laberinto.transform.Rotate(new Vector3(0, 0, 0));
 	}
 
     void OnTriggerEnter(Collider other)

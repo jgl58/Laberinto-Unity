@@ -153,7 +153,7 @@ void crearLaberinto(int[,] M, int m, int n)
                 {
                     pared.transform.localScale = new Vector3(1f, 1f, 1f);
 
-                    GameObject auxPared = Instantiate(pared, new Vector3(i, 0, j), new Quaternion());
+                    GameObject auxPared = Instantiate(pared, new Vector3(i-(mMax/2), 0, j-(nMax/2)), new Quaternion());
                     auxPared.transform.parent = parentLaberinto.transform;
                 }
                 if (M[i, j] == LIBRE)
@@ -176,7 +176,7 @@ void crearLaberinto(int[,] M, int m, int n)
                         {
                             rotar = -90;
                         }
-                        GameObject auxHueco = Instantiate(hueco, new Vector3(i, -1, j), Quaternion.Euler(90, rotar, 0));
+                        GameObject auxHueco = Instantiate(hueco, new Vector3(i - (mMax / 2), -1, j - (nMax / 2)), Quaternion.Euler(90, rotar, 0));
                         auxHueco.transform.parent = parentLaberinto.transform;
                     }
                     else
@@ -184,13 +184,13 @@ void crearLaberinto(int[,] M, int m, int n)
                         //Instanciamos suelo liso
                         suelo.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
                         suelo.transform.parent = parentLaberinto.transform;
-                        GameObject auxSuelo = Instantiate(suelo, new Vector3(i, -1, j), Quaternion.Euler(90, 0, 0));
+                        GameObject auxSuelo = Instantiate(suelo, new Vector3(i - (mMax / 2), -1, j - (nMax / 2)), Quaternion.Euler(90, 0, 0));
                         auxSuelo.transform.parent = parentLaberinto.transform;
                         int pongoPremio = Random.Range(0, 11);
                         if (pongoPremio == 1)
                         {
                             premio.transform.localScale = new Vector3(0.5f, 0.2f, 0.5f);
-                            GameObject auxPremio = Instantiate(premio, new Vector3(i, 0, j), Quaternion.Euler(-90, 0, 0));
+                            GameObject auxPremio = Instantiate(premio, new Vector3(i - (mMax / 2), 0, j - (nMax / 2)), Quaternion.Euler(-90, 0, 0));
                             auxPremio.transform.parent = parentLaberinto.transform;
                         }
                     }
