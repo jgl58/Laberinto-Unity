@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 6fd099d339b4ae34692c8258e4f87531, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 59b8043f54a675941ae9d6d3a01bb9de, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.36505517, g: 0.48550034, b: 0.61491, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -229,12 +229,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 48109842}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d08d9d3158945847b301c0b5532a2b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1430165889}
+  player: {fileID: 645988251}
+  velocidad: 2
 --- !u!1 &141880577
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentLaberinto: {fileID: 0}
+  turnSpeed: 20
 --- !u!1 &684459691
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +842,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Win Text
+  m_Text: 
 --- !u!222 &1400846204
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -962,15 +964,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 2229270442000394493}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430165889}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1329c9901fc4eaa47a467a1f9115fb6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidad: 15
   countText: {fileID: 170341373}
   winText: {fileID: 1400846203}
   nivel: {fileID: 1172662279}
+  vida1: {fileID: 358881484}
+  vida2: {fileID: 684459691}
+  vida3: {fileID: 1441898311}
   instance: {fileID: 0}
 --- !u!23 &1430165892
 MeshRenderer:
@@ -1043,7 +1047,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1430165889}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0.529, z: -4}
+  m_LocalPosition: {x: -4, y: 1, z: -4}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1255,7 +1259,7 @@ PrefabInstance:
     - target: {fileID: 2229270441242440062, guid: b59e9a76a1e7f9148b887ed7accc2dc0,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2229270441242440058, guid: b59e9a76a1e7f9148b887ed7accc2dc0,
         type: 3}
@@ -1265,7 +1269,7 @@ PrefabInstance:
     - target: {fileID: 2229270441242440058, guid: b59e9a76a1e7f9148b887ed7accc2dc0,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.529
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2229270441242440058, guid: b59e9a76a1e7f9148b887ed7accc2dc0,
         type: 3}

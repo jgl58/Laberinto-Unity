@@ -5,15 +5,22 @@ public class CameraController : MonoBehaviour {
 
 	public GameObject player;
 
-	private Vector3 desplazamiento;
+	private float posH, posV;
+	public float velocidad;
 
-	// Use this for initialization
-	void Start () {
-		desplazamiento = transform.position - player.transform.position;
-	}
 	
+
+ 
+	void Update()
+	{
+		float posH = Input.GetAxis("Horizontal");
+		float posV = Input.GetAxis("Vertical");
+
+		rotate();
+	}
 	// Update is called once per frame
-	void LateUpdate () {
-		transform.position = player.transform.position + desplazamiento;
+	void rotate()
+	{
+		transform.Rotate(new Vector3(posV *velocidad, posH * velocidad, 0f));
 	}
 }

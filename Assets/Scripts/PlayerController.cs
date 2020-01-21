@@ -1,14 +1,15 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour {
 
-	public float velocidad;
     public Text countText;
     public Text winText;
 	public Text nivel;
+	public GameObject vida1, vida2, vida3;
 	
 
 	private Rigidbody rb;
@@ -62,24 +63,24 @@ public class PlayerController : MonoBehaviour {
 		switch (instance.vidas)
 		{
 			case 3:
-				GameObject.FindGameObjectWithTag("vida1").SetActive(true);
-				GameObject.FindGameObjectWithTag("vida2").SetActive(true);
-				GameObject.FindGameObjectWithTag("vida3").SetActive(true);
+				vida1.SetActive(true);
+				vida2.SetActive(true);
+				vida3.SetActive(true);
 				break;
 			case 2:
-				GameObject.FindGameObjectWithTag("vida1").SetActive(true);
-				GameObject.FindGameObjectWithTag("vida2").SetActive(true);
-				GameObject.FindGameObjectWithTag("vida3").SetActive(false);
+				vida1.SetActive(true);
+				vida2.SetActive(true);
+				vida3.SetActive(false);
 				break;
 			case 1:
-				GameObject.FindGameObjectWithTag("vida1").SetActive(true);
-				GameObject.FindGameObjectWithTag("vida2").SetActive(false);
-				GameObject.FindGameObjectWithTag("vida3").SetActive(false);
+				vida1.SetActive(true);
+				vida2.SetActive(false);
+				vida3.SetActive(false);
 				break;
 			default:
-				GameObject.FindGameObjectWithTag("vida1").SetActive(false);
-				GameObject.FindGameObjectWithTag("vida2").SetActive(false);
-				GameObject.FindGameObjectWithTag("vida3").SetActive(false);
+				vida1.SetActive(false);
+				vida2.SetActive(false);
+				vida3.SetActive(false);
 				break;
 		}
 	}
@@ -87,10 +88,10 @@ public class PlayerController : MonoBehaviour {
 	void resetNivel()
 	{
 		GameObject pelota = GameObject.FindGameObjectWithTag("Player");
-		pelota.transform.position = new Vector3(1f, 0.5f, 1f);
+		pelota.transform.position = new Vector3(-4f, 1f, -4f);
 
 		GameObject laberinto = GameObject.FindGameObjectWithTag("Laberinto");
-		laberinto.transform.Rotate(new Vector3(0, 0, 0));
+		laberinto.transform.eulerAngles = new Vector3(0, 0, 0);
 	}
 
     void OnTriggerEnter(Collider other)
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour {
 
     void CargarNivel()
     {
-        Application.LoadLevel(0);
+		SceneManager.LoadScene(0);
     }
 
 	void SetCountText()

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 782456473273324419}
   m_Layer: 0
   m_Name: suelo_llano
-  m_TagString: Untagged
+  m_TagString: sueloLiso
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

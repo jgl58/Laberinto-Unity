@@ -141,10 +141,7 @@ void crearLaberinto(int[,] M, int m, int n)
     {
         
         crearLaberinto(M, mMax, nMax);
-        pared.transform.parent = parentLaberinto.transform;
-        hueco.transform.parent = parentLaberinto.transform;
-        suelo.transform.parent = parentLaberinto.transform;
-        premio.transform.parent = parentLaberinto.transform;
+        parentLaberinto = GameObject.FindGameObjectWithTag("Laberinto");
         for (int i = 0; i < mMax; i++)
         {
             for (int j = 0; j < nMax; j++)
@@ -183,7 +180,7 @@ void crearLaberinto(int[,] M, int m, int n)
                     {
                         //Instanciamos suelo liso
                         suelo.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-                        suelo.transform.parent = parentLaberinto.transform;
+                        
                         GameObject auxSuelo = Instantiate(suelo, new Vector3(i - (mMax / 2), -1, j - (nMax / 2)), Quaternion.Euler(90, 0, 0));
                         auxSuelo.transform.parent = parentLaberinto.transform;
                         int pongoPremio = Random.Range(0, 11);
