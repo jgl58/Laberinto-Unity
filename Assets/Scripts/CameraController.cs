@@ -8,19 +8,20 @@ public class CameraController : MonoBehaviour {
 	private float posH, posV;
 	public float velocidad;
 
-	
 
- 
-	void Update()
+	private Vector3 offset;            //Private variable to store the offset distance between the player and camera
+
+	// Use this for initialization
+	void Start()
 	{
-		float posH = Input.GetAxis("Horizontal");
-		float posV = Input.GetAxis("Vertical");
-
-		rotate();
+		//Calculate and store the offset value by getting the distance between the player's position and camera's position.
+		offset = transform.position - player.transform.position;
 	}
-	// Update is called once per frame
-	void rotate()
+
+	// LateUpdate is called after Update each frame
+	void LateUpdate()
 	{
-		transform.Rotate(new Vector3(posV *velocidad, posH * velocidad, 0f));
+		// Set the position of the camera's transform to be the same as the player's, but offset by the calculated offset distance.
+		transform.position = player.transform.position + offset;
 	}
 }

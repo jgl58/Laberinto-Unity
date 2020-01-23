@@ -2,13 +2,14 @@
 using System.Collections;
 
 public class SueloController : MonoBehaviour {
-    //private Rigidbody rb;
+    private Rigidbody rb;
     public GameObject parentLaberinto;
     public float turnSpeed;
     // Use this for initialization
     void Start () {
-       //rb = GetComponent<Rigidbody>();
-       }
+       rb = GetComponent<Rigidbody>();
+	    rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezeRotationY;
+	}
 
     private void Awake()
     {
@@ -21,10 +22,17 @@ public class SueloController : MonoBehaviour {
         float xangle = Input.GetAxis("Vertical");
 
         transform.Rotate(new Vector3(xangle, 0, zangle));
-        //rotateSuelo();
-    }
 
-    void rotateSuelo()
+		//transform.localRotation = Quaternion.Euler(transform.localRotation.x, 0, transform.localRotation.z);
+		//rotateSuelo();
+	}
+
+	protected void LateUpdate()
+	{
+		transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);
+	}
+
+	void rotateSuelo()
     {
         float rotationX = Input.GetAxis("Vertical");
         float rotationY = Input.GetAxis("Horizontal");
