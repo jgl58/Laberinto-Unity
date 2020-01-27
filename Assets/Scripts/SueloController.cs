@@ -22,46 +22,10 @@ public class SueloController : MonoBehaviour {
         float xangle = Input.GetAxis("Vertical");
 
         transform.Rotate(new Vector3(xangle, 0, zangle));
-
-		//transform.localRotation = Quaternion.Euler(transform.localRotation.x, 0, transform.localRotation.z);
-		//rotateSuelo();
 	}
 
-	protected void LateUpdate()
-	{
-		transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);
-	}
-
-	void rotateSuelo()
+    protected void LateUpdate()
     {
-        float rotationX = Input.GetAxis("Vertical");
-        float rotationY = Input.GetAxis("Horizontal");
-
-        //left and right
-        if (Mathf.Abs(rotationX) > Mathf.Abs(rotationY))
-        {
-            if (rotationX > 0)
-                transform.Rotate(Vector3.right, -turnSpeed * Time.deltaTime);
-            else
-                transform.Rotate(Vector3.right, turnSpeed * Time.deltaTime);
-        }
-
-        //up and down
-        if (Mathf.Abs(rotationX) < Mathf.Abs(rotationY))
-        {
-            if (rotationY < 0)
-            {
-                transform.Rotate(Vector3.forward, -turnSpeed * Time.deltaTime);
-            }
-            else
-            {
-                transform.Rotate(Vector3.forward, turnSpeed * Time.deltaTime);
-            }
-        }
-        float minRotation = -45;
-        float maxRotation = 45;
-        Vector3 currentRotation = transform.localRotation.eulerAngles;
-        currentRotation.x = Mathf.Clamp(currentRotation.x, minRotation, maxRotation);
-        transform.localRotation = Quaternion.Euler(currentRotation);
+        transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, 0, transform.localEulerAngles.z);
     }
 }

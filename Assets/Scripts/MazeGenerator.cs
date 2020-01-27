@@ -12,9 +12,9 @@ public class MazeGenerator : MonoBehaviour
 
     public PartidaSingleton instance;
 
-    public static int nMax = 11;//impar
-public static int mMax = 11;//impar
-public static int[,] M = new int[mMax,nMax];
+    public static int nMax;//impar
+public static int mMax;//impar
+public static int[,] M;
 const int BLOQUE = 0;
 const int LIBRE = 1;
 
@@ -139,7 +139,10 @@ void crearLaberinto(int[,] M, int m, int n)
 
     private void Start()
     {
-        
+
+        nMax = PartidaSingleton.instance.nMax;
+        mMax = PartidaSingleton.instance.mMax;
+        M = new int[mMax, nMax];
         crearLaberinto(M, mMax, nMax);
         parentLaberinto = GameObject.FindGameObjectWithTag("Laberinto");
         for (int i = 0; i < mMax; i++)

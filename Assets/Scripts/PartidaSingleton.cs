@@ -8,6 +8,8 @@ public class PartidaSingleton : MonoBehaviour
     public int contadorNiveles = 1;
     public static PartidaSingleton instance;
     public int vidas = 3;
+    public int nMax = 11;
+    public int mMax = 11;
     
     public static PartidaSingleton Instance
     {

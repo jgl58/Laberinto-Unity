@@ -107,6 +107,12 @@ public class PlayerController : MonoBehaviour {
                 winText.text = "¡¡Ganaste!!";
                 instance.contadorNiveles++;
 				instance.vidas = 3;
+				
+				if(instance.nMax < 17 && instance.mMax < 17)
+				{
+					instance.nMax += 2;
+					instance.mMax += 2;
+				}
 				gestionVidas();
                 Invoke("CargarNivel",1.5f);
             }
