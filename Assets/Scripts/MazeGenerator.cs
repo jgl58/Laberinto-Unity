@@ -13,10 +13,10 @@ public class MazeGenerator : MonoBehaviour
     public PartidaSingleton instance;
 
     public static int nMax;//impar
-public static int mMax;//impar
-public static int[,] M;
-const int BLOQUE = 0;
-const int LIBRE = 1;
+    public static int mMax;//impar
+    public static int[,] M;
+    const int BLOQUE = 0;
+    const int LIBRE = 1;
 
     void Awake()
     {
@@ -42,7 +42,7 @@ const int LIBRE = 1;
     }
 }
 
-void obtenerParOrdenadoRandom(int[,]a, ref int k,ref int x,ref int y)
+    void obtenerParOrdenadoRandom(int[,]a, ref int k,ref int x,ref int y)
 {
         int index = Random.Range(0,k); //range 0 to k-1
 
@@ -57,7 +57,7 @@ void obtenerParOrdenadoRandom(int[,]a, ref int k,ref int x,ref int y)
 }
 
 
-void crearLaberinto(int[,] M, int m, int n)
+    void crearLaberinto(int[,] M, int m, int n)
 {
         int[,] ID_VECINOS_BLOQUEADOS = new int[m + n, 2];
         int [,] ID_VECINOS_DESBLOQUEADOS = new int[4,2];
